@@ -22,6 +22,7 @@ public class SlappingBehaviour : MonoBehaviour {
 
 	//DEBUG
 	public GUIText debugText;
+	public GUIText recordText;
 
 	void Start () {
 		oldRotation = transform.rotation.eulerAngles;
@@ -80,31 +81,50 @@ public class SlappingBehaviour : MonoBehaviour {
 	}
 
 	public void CalculateAverageSpeed() {
-		float record = 1 - (endTime - startingTime);
+		float average = 1 - (endTime - startingTime);
 
-		print (record);
-		return;
+		if (average < 0f)
+			average = 0f;
 
-		//DEPRECATED
-		float sum = 0f;
-		
-		foreach (float f in rotationDegrees)
+		if ((endTime - startingTime) == 0f)
 		{
-			sum += f;
+			return;
 		}
-		
-		float average = sum / rotationDegrees.Count;
 
 		if (average > record)
 		{
-			debugText.text = "WOW, YOU BEAT THE RECORD. "+average;
-
+			debugText.text = average.ToString();
 			record = average;
 		}
 
-		else 
-			debugText.text = "You should practice more. Your mere "+average+" did not beat the record "+record;
+		else
+		{
+			debugText.text = average.ToString();
+		}
 
-		ClearSlappingData();
+		recordText.text = record.ToString();
+		return;
+
+		//DEPRECATED
+//		float sum = 0f;
+//		
+//		foreach (float f in rotationDegrees)
+//		{
+//			sum += f;
+//		}
+//		
+//		float average = sum / rotationDegrees.Count;
+//
+//		if (average > record)
+//		{
+//			debugText.text = "WOW, YOU BEAT THE RECORD. "+average;
+//
+//			record = average;
+//		}
+//
+//		else 
+//			debugText.text = "You should practice more. Your mere "+average+" did not beat the record "+record;
+//
+//		ClearSlappingData();
 	}
 }

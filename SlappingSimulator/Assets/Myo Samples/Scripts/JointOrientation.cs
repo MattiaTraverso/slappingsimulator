@@ -38,9 +38,9 @@ public class JointOrientation : MonoBehaviour
         if (thalmicMyo.pose != _lastPose) {
             _lastPose = thalmicMyo.pose;
 
-            if (thalmicMyo.pose == Pose.FingersSpread) {
-                updateReference = true;
-            }
+//            if (thalmicMyo.pose == Pose.FingersSpread) {
+//                updateReference = true;
+//            }
         }
         if (Input.GetKeyDown ("r")) {
             updateReference = true;

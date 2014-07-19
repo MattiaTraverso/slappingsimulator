@@ -5,7 +5,9 @@ public class TargetBehaviour : MonoBehaviour {
 	public SlappingBehaviour slappingBehaviour;
 	public ChangeRigidbodies changeRigidbodies;
 	public JointOrientation jointOrientation;
-	
+	public ChangeAudioClipTo changeClip;
+	public AudioClip hitClip;
+
 	void OnCollisionEnter(Collision collision) {
 		slappingBehaviour.StopSlapping();
 		float averageSpeed = slappingBehaviour.CalculateAverageSpeed();
@@ -19,6 +21,7 @@ public class TargetBehaviour : MonoBehaviour {
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
 		jointOrientation.Vibrate();
+		changeClip.ChangeClip(hitClip);
 
 		collider.isTrigger = true;
 	}

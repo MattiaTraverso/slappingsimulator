@@ -13,9 +13,16 @@ public class TargetBehaviour : MonoBehaviour {
 
 	public float STRENGTH;
 
+	public static bool FLIP_OUT;
+
 	void OnCollisionEnter(Collision collision) {
 		if(!enabled)
 			return;
+
+		if (collision.gameObject.name != "Box")
+			return;
+
+		FLIP_OUT = true;
 
 		slappingBehaviour.StopSlapping();
 		float averageSpeed = slappingBehaviour.CalculateAverageSpeed();
@@ -28,7 +35,7 @@ public class TargetBehaviour : MonoBehaviour {
 		//rigidbody.AddForce(transform.forward  * averageSpeed * 3000f, ForceMode.Force);
 		changeRigidbodies.ActivateGravity(true);
 		changeRigidbodies.RemoveConstraints();
-		changeRigidbodies.AddForce(transform.forward  * power * STRENGTH);
+		changeRigidbodies.AddForce((transform.forward  * power * STRENGTH) + new Vector3(0f, 4200f * averageSpeed / 2.5f, 0f));
 
 		Camera.main.gameObject.GetComponent<CameraShake>().enabled = true;
 		Camera.main.gameObject.GetComponent<CameraShake>().Shake (power / 3f);

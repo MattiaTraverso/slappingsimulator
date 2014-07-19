@@ -17,7 +17,7 @@ public class OffsetY : MonoBehaviour {
 
 		gameObject.isStatic = true;
 
-		iTween.MoveBy(gameObject, iTween.Hash ("y", Random.Range (-30f, 30f), "time", 1.30f, "easetype", iTween.EaseType.easeInOutElastic, "looptype", iTween.LoopType.pingPong));
+		iTween.MoveBy(gameObject, iTween.Hash ("y", Random.Range (-30f, 30f), "time", 1.30f, "easetype", iTween.EaseType.easeInOutElastic, "delay", Random.Range(0f, 10f)));
 		enabled = false;
 	}
 

@@ -7,13 +7,17 @@ public class StartingAreaBehaviour : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
 	{
-		slappingBehaviour.StopSlapping();
-		slappingBehaviour.ClearSlappingData();
-		disableTrigger.RevertCollision();
+		if (collider.gameObject.name == "Box")
+		{
+			slappingBehaviour.StopSlapping();
+			slappingBehaviour.ClearSlappingData();
+			disableTrigger.RevertCollision();
+		}
 	}
 
 	void OnTriggerExit(Collider collider)
 	{
-		slappingBehaviour.StartSlapping();
+		if (collider.gameObject.name == "Box")
+			slappingBehaviour.StartSlapping();
 	}
 }

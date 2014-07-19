@@ -17,7 +17,7 @@ public class MicrophoneInput : MonoBehaviour
 
 		foreach (string device in Microphone.devices) 
 		{
-			Debug.Log("Name: " + device);
+			//Debug.Log("Name: " + device);
 		}
 	}
 	

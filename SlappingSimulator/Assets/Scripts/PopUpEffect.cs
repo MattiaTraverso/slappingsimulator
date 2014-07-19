@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PopUpEffect : MonoBehaviour {
-	public AudioClip[] insults;
+	public List<AudioClip> insults;
+	List<AudioClip> currentInsults;
+
 	public Transform transform1;
 	public Transform transform2;
 	int id = 0;
 
+	bool isDead;
+
 	// Use this for initialization
 	void Start () {
 		ScaleUp ();
+
+		currentInsults = insults;
 	}
 
 	void ScaleUp()
@@ -36,8 +43,12 @@ public class PopUpEffect : MonoBehaviour {
 	}
 
 	void idle() {
-		int rand = Random.Range (0, insults.Length);
-		audio.clip = insults[rand];
+		if (currentInsults.Count < 1)
+			currentInsults = insults;
+
+		int rand = Random.Range (0, currentInsults.Count);
+		audio.clip = currentInsults[rand];
+		currentInsults.Remove (audio.clip);
 		audio.Play ();
 
 		iTween.RotateBy (gameObject, iTween.Hash("x", Random.Range(-0.05f, 0.05f), "easetype", iTween.EaseType.easeInOutBack, "looptype", iTween.LoopType.pingPong, "time", 1.3f));
@@ -51,7 +62,9 @@ public class PopUpEffect : MonoBehaviour {
 	IEnumerator wait() {
 		iTween.Stop (gameObject);
 		yield return new WaitForSeconds(Random.Range (1f, 2f));
-		ScaleUp ();
+
+		if (!isDead)
+			ScaleUp ();
 	}
 
 	void SwitchPosition() {
@@ -65,5 +78,18 @@ public class PopUpEffect : MonoBehaviour {
 			transform.position = transform1.position;
 			transform.rotation = transform1.rotation;
 		}
+	}
+
+	public void DieOff() {
+		print ("TACCI MIA");
+		iTween.Stop();
+		audio.Stop ();
+		isDead = true;
+		iTween.ValueTo (gameObject, iTween.Hash ("from", 0.45f, "to", 0, "onupdate", "changeScale", "time", 0.15f, "oncomplete", "KillMe"));
+	}
+
+	public void KillMe() {
+		print("LOLLAI");
+		enabled = false;
 	}
 }

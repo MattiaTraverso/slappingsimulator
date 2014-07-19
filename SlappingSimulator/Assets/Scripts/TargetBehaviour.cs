@@ -7,6 +7,7 @@ public class TargetBehaviour : MonoBehaviour {
 	public JointOrientation jointOrientation;
 	public ChangeAudioClipTo changeClip;
 	public TweenMotionBlur tweenMotionBlur;
+	public PopUpEffect popupEffect;
 	public GameObject followCamera;
 	public Animation animation;
 	public AudioClip hitClip;
@@ -37,7 +38,7 @@ public class TargetBehaviour : MonoBehaviour {
 //		print (averageSpeed);
 //		print (averageVolume / 20f);
 
-
+		popupEffect.DieOff();
 
 		//rigidbody.AddForce(transform.forward  * averageSpeed * 3000f, ForceMode.Force);
 		changeRigidbodies.ActivateGravity(true);
@@ -49,7 +50,7 @@ public class TargetBehaviour : MonoBehaviour {
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
 		jointOrientation.Vibrate();
-		changeClip.ChangeClip(hitClip);
+		//changeClip.ChangeClip(hitClip);
 		Destroy (animation);
 		tweenMotionBlur.enabled = true;
 		if (followCamera) followCamera.SetActive(true);

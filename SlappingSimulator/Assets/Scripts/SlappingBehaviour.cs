@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using Pose = Thalmic.Myo.Pose;
 
 public class SlappingBehaviour : MonoBehaviour {
+	public MicrophoneInput microphoneInput;
+	private List<float> volumes = new List<float>();
+
 	const bool DEBUG = false;
 
 	bool isSlapping;
@@ -31,9 +34,21 @@ public class SlappingBehaviour : MonoBehaviour {
 	}
 
 	void Update () {
+		if (Input.GetKeyDown (KeyCode.X))
+		{
+			StartSlapping();
+		}
+
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			StopSlapping();
+			CalculateAverageVolume();
+		}
+
 		CalculateRotationDelta();
 
 		if (isSlapping) {
+			volumes.Add (microphoneInput.loudness);
 			rotationDegrees.Add(rotationDelta);
 		}
 
@@ -67,6 +82,8 @@ public class SlappingBehaviour : MonoBehaviour {
 	public void StartSlapping () {
 		isSlapping = true;
 		startingTime = Time.time;
+
+		volumes.Clear();
 		//debugText.text = "SLAPPING";
 	}
  
@@ -105,5 +122,18 @@ public class SlappingBehaviour : MonoBehaviour {
 		recordText.text = record.ToString();
 
 		return average;
+	}
+
+	public void CalculateAverageVolume() {
+		float sum = 0f;
+
+		foreach (float f in volumes)
+		{
+			sum += f;
+		}
+
+		float average = sum / volumes.Count;
+
+		print (average);
 	}
 }

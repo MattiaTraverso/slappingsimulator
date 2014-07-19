@@ -1,13 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ChangeAudioClipTo.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Follow.cs">
     <Files>
-      <File FileName="Assets/Myo Samples/Scripts/JointOrientation.cs" Line="132" Column="41" />
+      <File FileName="Assets/Scripts/ChangeRigidbodies.cs" Line="30" Column="5" />
+      <File FileName="Assets/Myo Samples/Scripts/JointOrientation.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SlappingBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/PlayRandomSoundFromArray.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TargetBehaviour.cs" Line="9" Column="27" />
-      <File FileName="Assets/ChangeRigidbodies.cs" Line="1" Column="1" />
-      <File FileName="Assets/ChangeAudioClipTo.cs" Line="10" Column="20" />
+      <File FileName="Assets/Scripts/TargetBehaviour.cs" Line="9" Column="41" />
+      <File FileName="Assets/Scripts/MicrophoneInput.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CameraShake.cs" Line="1" Column="1" />
+      <File FileName="Assets/TweenMotionBlur.cs" Line="1" Column="1" />
+      <File FileName="Assets/PoppingCubeBehaviour.cs" Line="27" Column="78" />
+      <File FileName="Assets/Follow.cs" Line="19" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

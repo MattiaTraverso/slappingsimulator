@@ -7,11 +7,11 @@ public class CameraShake : MonoBehaviour
 	public float shake_decay;
 	public float shake_intensity;
 	
-	void OnGUI (){
-		if (GUI.Button (new Rect (20,40,80,20), "Shake")){
-			Shake ();
-		}
-	}
+//	void OnGUI (){
+//		if (GUI.Button (new Rect (20,40,80,20), "Shake")){
+//			Shake ();
+//		}
+//	}
 	
 	void Update (){
 		if (shake_intensity > 0){

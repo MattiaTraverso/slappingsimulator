@@ -6,6 +6,7 @@ public class TargetBehaviour : MonoBehaviour {
 	public ChangeRigidbodies changeRigidbodies;
 	public JointOrientation jointOrientation;
 	public ChangeAudioClipTo changeClip;
+	public TweenMotionBlur tweenMotionBlur;
 	public Animation animation;
 	public AudioClip hitClip;
 
@@ -24,6 +25,8 @@ public class TargetBehaviour : MonoBehaviour {
 		jointOrientation.Vibrate();
 		changeClip.ChangeClip(hitClip);
 		Destroy (animation);
+		tweenMotionBlur.enabled = true;
+		//Time.timeScale = 0.3f;
 
 		collider.isTrigger = true;
 	}

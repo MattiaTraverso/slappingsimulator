@@ -7,8 +7,11 @@ public class TargetBehaviour : MonoBehaviour {
 	public JointOrientation jointOrientation;
 	public ChangeAudioClipTo changeClip;
 	public TweenMotionBlur tweenMotionBlur;
+	public GameObject followCamera;
 	public Animation animation;
 	public AudioClip hitClip;
+
+	public float STRENGTH;
 
 	void OnCollisionEnter(Collision collision) {
 		slappingBehaviour.StopSlapping();
@@ -17,8 +20,9 @@ public class TargetBehaviour : MonoBehaviour {
 		//rigidbody.AddForce(transform.forward  * averageSpeed * 3000f, ForceMode.Force);
 		changeRigidbodies.ActivateGravity(true);
 		changeRigidbodies.RemoveConstraints();
-		changeRigidbodies.AddForce(transform.forward  * averageSpeed * 30000f);
+		changeRigidbodies.AddForce(transform.forward  * averageSpeed * STRENGTH);
 
+		Camera.main.gameObject.GetComponent<CameraShake>().enabled = true;
 		Camera.main.gameObject.GetComponent<CameraShake>().Shake (averageSpeed);
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
@@ -26,6 +30,7 @@ public class TargetBehaviour : MonoBehaviour {
 		changeClip.ChangeClip(hitClip);
 		Destroy (animation);
 		tweenMotionBlur.enabled = true;
+		followCamera.SetActive(true);
 		//Time.timeScale = 0.3f;
 
 		collider.isTrigger = true;

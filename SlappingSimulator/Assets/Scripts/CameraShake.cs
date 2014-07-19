@@ -6,7 +6,7 @@ public class CameraShake : MonoBehaviour
 	private Quaternion originRotation;
 	public float shake_decay;
 	public float shake_intensity;
-	
+
 //	void OnGUI (){
 //		if (GUI.Button (new Rect (20,40,80,20), "Shake")){
 //			Shake ();

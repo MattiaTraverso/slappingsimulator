@@ -32,7 +32,7 @@ public class JointOrientation : MonoBehaviour
     {
         // Access the ThalmicMyo component attached to the Myo object.
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
-
+		
         // Update references when the pose becomes fingers spread or the q key is pressed.
         bool updateReference = false;
         if (thalmicMyo.pose != _lastPose) {
@@ -127,4 +127,8 @@ public class JointOrientation : MonoBehaviour
         }
         return angle;
     }
+
+	public void Vibrate() {
+		myo.GetComponent<ThalmicMyo> ().Vibrate(Thalmic.Myo.VibrationType.Long);
+	}
 }

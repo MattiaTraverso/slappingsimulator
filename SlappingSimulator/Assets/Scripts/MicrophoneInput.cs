@@ -14,12 +14,12 @@ public class MicrophoneInput : MonoBehaviour
 		audio.mute = true; // Mute the sound, we don't want the player to hear it
 
 		//TODO: FIX
-		//while (!(Microphone.GetPosition(Microphone.devices[0]) > 0)){} // Wait until the recording has started
-		//audio.Play(); // Play the audio source!
+		while (!(Microphone.GetPosition(Microphone.devices[0]) > 0)){} // Wait until the recording has started
+		audio.Play(); // Play the audio source!
 
 		foreach (string device in Microphone.devices) 
 		{
-			//Debug.Log("Name: " + device);
+			Debug.Log("Name: " + device);
 		}
 	}
 	

@@ -29,8 +29,15 @@ public class TargetBehaviour : MonoBehaviour {
 		float averageVolume = slappingBehaviour.CalculateAverageVolume();
 		float power = averageSpeed + averageVolume / 20f;
 
-		print (averageSpeed);
-		print (averageVolume / 20f);
+		if (float.IsNaN(power)) {
+			power = 1;
+			print("NAN");
+		}
+
+//		print (averageSpeed);
+//		print (averageVolume / 20f);
+
+
 
 		//rigidbody.AddForce(transform.forward  * averageSpeed * 3000f, ForceMode.Force);
 		changeRigidbodies.ActivateGravity(true);

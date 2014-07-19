@@ -37,7 +37,7 @@ public class SlappingBehaviour : MonoBehaviour {
 		CalculateRotationDelta();
 
 		if (isSlapping) {
-			volumes.Add (microphoneInput.loudness);
+			//volumes.Add (microphoneInput.loudness);
 			rotationDegrees.Add(rotationDelta);
 		}
 

@@ -19,14 +19,19 @@ public class TargetBehaviour : MonoBehaviour {
 
 		slappingBehaviour.StopSlapping();
 		float averageSpeed = slappingBehaviour.CalculateAverageSpeed();
+		float averageVolume = slappingBehaviour.CalculateAverageVolume();
+		float power = averageSpeed + averageVolume / 20f;
+
+		print (averageSpeed);
+		print (averageVolume / 20f);
 
 		//rigidbody.AddForce(transform.forward  * averageSpeed * 3000f, ForceMode.Force);
 		changeRigidbodies.ActivateGravity(true);
 		changeRigidbodies.RemoveConstraints();
-		changeRigidbodies.AddForce(transform.forward  * averageSpeed * STRENGTH);
+		changeRigidbodies.AddForce(transform.forward  * power * STRENGTH);
 
 		Camera.main.gameObject.GetComponent<CameraShake>().enabled = true;
-		Camera.main.gameObject.GetComponent<CameraShake>().Shake (averageSpeed / 3f);
+		Camera.main.gameObject.GetComponent<CameraShake>().Shake (power / 3f);
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
 		jointOrientation.Vibrate();

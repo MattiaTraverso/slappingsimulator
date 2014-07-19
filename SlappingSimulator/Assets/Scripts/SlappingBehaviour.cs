@@ -34,17 +34,6 @@ public class SlappingBehaviour : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.X))
-		{
-			StartSlapping();
-		}
-
-		if (Input.GetKeyDown(KeyCode.C))
-		{
-			StopSlapping();
-			CalculateAverageVolume();
-		}
-
 		CalculateRotationDelta();
 
 		if (isSlapping) {
@@ -124,7 +113,7 @@ public class SlappingBehaviour : MonoBehaviour {
 		return average;
 	}
 
-	public void CalculateAverageVolume() {
+	public float CalculateAverageVolume() {
 		float sum = 0f;
 
 		foreach (float f in volumes)
@@ -134,6 +123,6 @@ public class SlappingBehaviour : MonoBehaviour {
 
 		float average = sum / volumes.Count;
 
-		print (average);
+		return average;
 	}
 }

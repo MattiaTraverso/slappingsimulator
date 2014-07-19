@@ -1,41 +1,56 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ChangeRigidbodies : MonoBehaviour {
+	public Rigidbody[] rigids;
+
 	void Start () 
 	{
-		ActivateGravity(true);
+		ActivateGravity(false);
+		Sleep ();
+	}
+
+	public void Sleep() 
+	{
+		foreach (Rigidbody rigid in rigids) {
+			if (rigid != null)
+			{
+				rigid.Sleep();
+				rigid.isKinematic = true;
+			}
+		}
 	}
 
 	public void AddForce(Vector3 force)
 	{
-		foreach (Transform child in transform) {
-			Rigidbody rigid = child.gameObject.GetComponent<Rigidbody>();
+		foreach (Rigidbody rigid in rigids) {
 			
 			if (rigid != null)
 			{
+				rigid.isKinematic = false;
 				rigid.AddForce(force, ForceMode.Force);
 			}
 		}
 	}
 
 	public void ActivateGravity(bool useGravity) {
-		foreach (Transform child in transform) {
-			Rigidbody rigid = child.gameObject.GetComponent<Rigidbody>();
+		foreach (Rigidbody rigid in rigids) {
 
 			if (rigid != null)
 			{
+				rigid.isKinematic = false;
 				rigid.useGravity = useGravity;
 			}
 		}
 	}
 
 	public void RemoveConstraints () {
-		foreach (Transform child in transform) {
-			Rigidbody rigid = child.gameObject.GetComponent<Rigidbody>();
+		foreach (Rigidbody rigid in rigids) {
 			
 			if (rigid != null)
 			{
+				rigid.isKinematic = false;
 				rigid.constraints = RigidbodyConstraints.None;
 			}
 		}

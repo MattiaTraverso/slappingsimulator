@@ -6,6 +6,7 @@ public class TargetBehaviour : MonoBehaviour {
 	public ChangeRigidbodies changeRigidbodies;
 	public JointOrientation jointOrientation;
 	public ChangeAudioClipTo changeClip;
+	public Animation animation;
 	public AudioClip hitClip;
 
 	void OnCollisionEnter(Collision collision) {
@@ -22,6 +23,7 @@ public class TargetBehaviour : MonoBehaviour {
 
 		jointOrientation.Vibrate();
 		changeClip.ChangeClip(hitClip);
+		Destroy (animation);
 
 		collider.isTrigger = true;
 	}

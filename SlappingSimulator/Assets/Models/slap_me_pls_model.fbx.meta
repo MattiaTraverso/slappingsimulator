@@ -32,6 +32,10 @@ ModelImporter:
     100052: tallone_sx
     100054: testa
     100056: transform2
+    100058: ikHandle1
+    100060: ikHandle2
+    100062: ikHandle3
+    100064: ikHandle4
     400000: anca_dx
     400002: anca_sx
     400004: collo
@@ -61,11 +65,17 @@ ModelImporter:
     400052: tallone_sx
     400054: testa
     400056: transform2
+    400058: ikHandle1
+    400060: ikHandle2
+    400062: ikHandle3
+    400064: ikHandle4
     2300000: polySurface5
     3300000: polySurface5
     4300000: polySurface5
     4300002: polySurface1
+    7400000: Idle
     9500000: //RootNode
+    11100000: //RootNode
     13700000: polySurface1
   materials:
     importMaterials: 1
@@ -76,24 +86,116 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 23
+      wrapMode: 4
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      - path: ikHandle4
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube1/transform2
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/anca_dx
+        weight: 1
+      - path: root/anca_dx/ginocchio_dx
+        weight: 1
+      - path: root/anca_dx/ginocchio_dx/tallone_dx
+        weight: 1
+      - path: root/anca_dx/ginocchio_dx/tallone_dx/piede_dx
+        weight: 1
+      - path: root/anca_sx
+        weight: 1
+      - path: root/anca_sx/ginocchio_sx
+        weight: 1
+      - path: root/anca_sx/ginocchio_sx/tallone_sx
+        weight: 1
+      - path: root/anca_sx/ginocchio_sx/tallone_sx/piede_sx
+        weight: 1
+      - path: root/schiena4
+        weight: 1
+      - path: root/schiena4/schiena3
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/collo
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/collo/testa
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx/polso_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx/polso_dx/mano_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx/polso_dx/polySurface5
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx/gomito_sx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx/gomito_sx/polso_sx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx/gomito_sx/polso_sx/mano_sx
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
+    optimizeMeshForGPU: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
@@ -118,6 +220,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 

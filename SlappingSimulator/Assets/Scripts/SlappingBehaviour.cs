@@ -80,7 +80,7 @@ public class SlappingBehaviour : MonoBehaviour {
 		rotationDegrees.Clear();
 	}
 
-	public void CalculateAverageSpeed() {
+	public float CalculateAverageSpeed() {
 		float average = 1 - (endTime - startingTime);
 
 		if (average < 0f)
@@ -88,7 +88,7 @@ public class SlappingBehaviour : MonoBehaviour {
 
 		if ((endTime - startingTime) == 0f)
 		{
-			return;
+			return 0f;
 		}
 
 		if (average > record)
@@ -103,28 +103,7 @@ public class SlappingBehaviour : MonoBehaviour {
 		}
 
 		recordText.text = record.ToString();
-		return;
 
-		//DEPRECATED
-//		float sum = 0f;
-//		
-//		foreach (float f in rotationDegrees)
-//		{
-//			sum += f;
-//		}
-//		
-//		float average = sum / rotationDegrees.Count;
-//
-//		if (average > record)
-//		{
-//			debugText.text = "WOW, YOU BEAT THE RECORD. "+average;
-//
-//			record = average;
-//		}
-//
-//		else 
-//			debugText.text = "You should practice more. Your mere "+average+" did not beat the record "+record;
-//
-//		ClearSlappingData();
+		return average;
 	}
 }

@@ -50,7 +50,7 @@ public class TargetBehaviour : MonoBehaviour {
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
 		jointOrientation.Vibrate();
-		//changeClip.ChangeClip(hitClip);
+		changeClip.ChangeClip(hitClip);
 		Destroy (animation);
 		tweenMotionBlur.enabled = true;
 		if (followCamera) followCamera.SetActive(true);

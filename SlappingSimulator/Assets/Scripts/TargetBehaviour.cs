@@ -10,5 +10,6 @@ public class TargetBehaviour : MonoBehaviour {
 
 		rigidbody.AddForce(transform.forward  * averageSpeed * 300f, ForceMode.Force);
 		Camera.main.gameObject.GetComponent<CameraShake>().Shake (averageSpeed);
+		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 	}
 }

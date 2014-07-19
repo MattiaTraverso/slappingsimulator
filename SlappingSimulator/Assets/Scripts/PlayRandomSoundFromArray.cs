@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlayRandomSoundFromArray : MonoBehaviour {
-	List<AudioClip> clips = new List<AudioClip>();
+	public AudioClip[] clips;
 
 	public void PlayRandomSound() {
-		int rand = Random.Range (0, clips.Count);
+		int rand = Random.Range (0, clips.Length);
 
 		audio.clip = clips[rand];
 

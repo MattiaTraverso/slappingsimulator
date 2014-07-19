@@ -8,4 +8,5 @@ public class LookAtGuy : MonoBehaviour {
 	void Start () {
 		myChild.renderer.material = colors[Random.Range (0, colors.Length)];
 	}
+
 }

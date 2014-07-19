@@ -14,6 +14,9 @@ public class TargetBehaviour : MonoBehaviour {
 	public float STRENGTH;
 
 	void OnCollisionEnter(Collision collision) {
+		if(!enabled)
+			return;
+
 		slappingBehaviour.StopSlapping();
 		float averageSpeed = slappingBehaviour.CalculateAverageSpeed();
 
@@ -23,16 +26,18 @@ public class TargetBehaviour : MonoBehaviour {
 		changeRigidbodies.AddForce(transform.forward  * averageSpeed * STRENGTH);
 
 		Camera.main.gameObject.GetComponent<CameraShake>().enabled = true;
-		Camera.main.gameObject.GetComponent<CameraShake>().Shake (averageSpeed);
+		Camera.main.gameObject.GetComponent<CameraShake>().Shake (averageSpeed / 3f);
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
 		jointOrientation.Vibrate();
 		changeClip.ChangeClip(hitClip);
 		Destroy (animation);
 		tweenMotionBlur.enabled = true;
-		followCamera.SetActive(true);
+		if (followCamera) followCamera.SetActive(true);
 		//Time.timeScale = 0.3f;
 
 		collider.isTrigger = true;
+
+		enabled = false;
 	}
 }

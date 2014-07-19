@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: 9d122782872a3429d91d21308bd9d870
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: anca_dx
+    100002: anca_sx
+    100004: collo
+    100006: ginocchio_dx
+    100008: ginocchio_sx
+    100010: gomito_dx
+    100012: gomito_sx
+    100014: mano_dx
+    100016: mano_sx
+    100018: pCube1
+    100020: piede_dx
+    100022: piede_sx
+    100024: polso_dx
+    100026: polso_sx
+    100028: polySurface1
+    100030: polySurface5
+    100032: root
+    100034: schiena1
+    100036: schiena2
+    100038: schiena2 1
+    100040: schiena3
+    100042: schiena4
+    100044: //RootNode
+    100046: spalla_dx
+    100048: spalla_sx
+    100050: tallone_dx
+    100052: tallone_sx
+    100054: testa
+    100056: transform2
+    100058: ikHandle1
+    100060: ikHandle2
+    100062: ikHandle3
+    100064: ikHandle4
+    400000: anca_dx
+    400002: anca_sx
+    400004: collo
+    400006: ginocchio_dx
+    400008: ginocchio_sx
+    400010: gomito_dx
+    400012: gomito_sx
+    400014: mano_dx
+    400016: mano_sx
+    400018: pCube1
+    400020: piede_dx
+    400022: piede_sx
+    400024: polso_dx
+    400026: polso_sx
+    400028: polySurface1
+    400030: polySurface5
+    400032: root
+    400034: schiena1
+    400036: schiena2
+    400038: schiena2 1
+    400040: schiena3
+    400042: schiena4
+    400044: //RootNode
+    400046: spalla_dx
+    400048: spalla_sx
+    400050: tallone_dx
+    400052: tallone_sx
+    400054: testa
+    400056: transform2
+    400058: ikHandle1
+    400060: ikHandle2
+    400062: ikHandle3
+    400064: ikHandle4
+    2300000: polySurface5
+    3300000: polySurface5
+    4300000: polySurface5
+    4300002: polySurface1
+    7400000: Idle
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 23
+      wrapMode: 4
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      - path: ikHandle4
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube1/transform2
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/anca_dx
+        weight: 1
+      - path: root/anca_dx/ginocchio_dx
+        weight: 1
+      - path: root/anca_dx/ginocchio_dx/tallone_dx
+        weight: 1
+      - path: root/anca_dx/ginocchio_dx/tallone_dx/piede_dx
+        weight: 1
+      - path: root/anca_sx
+        weight: 1
+      - path: root/anca_sx/ginocchio_sx
+        weight: 1
+      - path: root/anca_sx/ginocchio_sx/tallone_sx
+        weight: 1
+      - path: root/anca_sx/ginocchio_sx/tallone_sx/piede_sx
+        weight: 1
+      - path: root/schiena4
+        weight: 1
+      - path: root/schiena4/schiena3
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/collo
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/collo/testa
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx/polso_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx/polso_dx/mano_dx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_dx/gomito_dx/polso_dx/polySurface5
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx/gomito_sx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx/gomito_sx/polso_sx
+        weight: 1
+      - path: root/schiena4/schiena3/schiena2/schiena2 1/schiena1/spalla_sx/gomito_sx/polso_sx/mano_sx
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

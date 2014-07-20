@@ -58,6 +58,9 @@ public class PairingScript : MonoBehaviour {
 			renderer.enabled = false;
 			text.SetActive(false);
 			speech.SetActive(true);
+			GameObject.Find ("Speech Bubble").GetComponent<PopUpEffect>().Restart();
+			GameObject.Find ("Speech Bubble").GetComponent<PopUpEffect>().ScaleUp();
+		
 
 			slappingBehaviour.StopSlapping();
 			slappingBehaviour.ClearSlappingData();

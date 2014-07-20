@@ -19,8 +19,9 @@ public class PopUpEffect : MonoBehaviour {
 		currentInsults = insults;
 	}
 
-	void ScaleUp()
+	public void ScaleUp()
 	{
+		iTween.Stop (gameObject);
 		SwitchPosition();
 		iTween.ValueTo (gameObject, iTween.Hash ("from", 0f, "to", 0.45f, "onupdate", "changeScale", "ease", iTween.EaseType.easeInOutSine, "time", 0.4f, "oncomplete", "idle"));
 	}

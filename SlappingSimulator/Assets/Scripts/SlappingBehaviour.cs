@@ -84,6 +84,9 @@ public class SlappingBehaviour : MonoBehaviour {
 
 	public void ClearSlappingData() {
 		rotationDegrees.Clear();
+		volumes.Clear ();
+		startingTime = 0f;
+		endTime = 0f;
 	}
 
 	public float CalculateAverageSpeed() {

@@ -19,5 +19,8 @@ public class Restart : MonoBehaviour {
 
  		GameObject.Find ("Speech Bubble").GetComponent<PopUpEffect>().Restart();
 		GameObject.Find ("Speech").SetActive(true);
+
+		Camera.main.gameObject.GetComponent<MotionBlur>().blurAmount = 0.01f;
+		Camera.main.gameObject.GetComponent<TweenMotionBlur>().enabled = false;
 	}
 }

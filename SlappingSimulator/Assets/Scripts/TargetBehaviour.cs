@@ -68,6 +68,7 @@ public class TargetBehaviour : MonoBehaviour {
 		FLIP_OUT = false;
 
 		slappingBehaviour.StopSlapping();
+		slappingBehaviour.ClearSlappingData();
 		changeRigidbodies.ActivateGravity(false);
 		changeRigidbodies.Sleep();
 

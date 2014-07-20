@@ -31,6 +31,8 @@ public class TargetBehaviour : MonoBehaviour {
 		float averageVolume = slappingBehaviour.CalculateAverageVolume();
 		float power = averageSpeed + averageVolume / 20f;
 
+		GameObject.Find ("Debug").GetComponent<DebugValues>().DrawValues(averageSpeed, averageVolume / 20f);
+
 		if (float.IsNaN(power)) {
 			power = 1;
 			print("NAN");

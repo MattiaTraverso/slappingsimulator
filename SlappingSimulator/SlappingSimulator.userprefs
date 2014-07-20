@@ -1,6 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SlappingBehaviour.cs">
+    <Files>
+      <File FileName="Assets/Scripts/TargetBehaviour.cs" Line="34" Column="53" />
+      <File FileName="Assets/Scripts/DebugValues.cs" Line="23" Column="44" />
+      <File FileName="Assets/Scripts/SlappingBehaviour.cs" Line="84" Column="86" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

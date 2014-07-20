@@ -38,6 +38,7 @@ public class SlappingBehaviour : MonoBehaviour {
 
 		if (isSlapping) {
 			volumes.Add (microphoneInput.loudness);
+			GameObject.Find ("Debug").GetComponent<DebugValues>().DrawVolumesAmount(volumes.Count);
 			rotationDegrees.Add(rotationDelta);
 		}
 
@@ -71,6 +72,7 @@ public class SlappingBehaviour : MonoBehaviour {
 	public void StartSlapping () {
 		isSlapping = true;
 		startingTime = Time.time;
+		GameObject.Find ("Debug").GetComponent<DebugValues>().DrawStartedOrNot(isSlapping);
 
 		volumes.Clear();
 		//debugText.text = "SLAPPING";
@@ -79,6 +81,7 @@ public class SlappingBehaviour : MonoBehaviour {
 	public void StopSlapping () {
 		isSlapping = false;
 		endTime = Time.time;
+		GameObject.Find ("Debug").GetComponent<DebugValues>().DrawStartedOrNot(isSlapping);
 		//debugText.text = "Not Slapping";
 	}
 

@@ -37,6 +37,9 @@ public class TargetBehaviour : MonoBehaviour {
 	public float TIME_TO_RESTART;
 	public float TIME_TO_PICTURE;
 
+	public GameObject area1;
+	public GameObject area2;
+
 	float pictureTimer = 0f;
 
 	public float STRENGTH;
@@ -70,7 +73,7 @@ public class TargetBehaviour : MonoBehaviour {
 
 		if (float.IsNaN(power)) {
 			power = 1;
-			print("NAN");
+			//print("NAN");
 		}
 
 		bool record = false;
@@ -127,6 +130,9 @@ public class TargetBehaviour : MonoBehaviour {
 
 		collider.isTrigger = true;
 		wasHit = true;
+
+		area1.SetActive(false);
+		area2.SetActive(false);
 	}
 
 	void Update () {
@@ -142,6 +148,7 @@ public class TargetBehaviour : MonoBehaviour {
 					GameObject.Find ("Restart").GetComponent<Restart>().RestartGame();
 				else
 				{
+					hasDoneRecord = false;
 					GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
 					cameraPlane.renderer.enabled = true;
 					cameraPlane.GetComponent<GetWebCam>().PlayTexture();
@@ -201,6 +208,9 @@ public class TargetBehaviour : MonoBehaviour {
 
 		followCamera.SetActive(false);
 		collider.isTrigger = false;
+
+		area1.SetActive(true);
+		area2.SetActive(true);
 
 		enabled = true;
 	}

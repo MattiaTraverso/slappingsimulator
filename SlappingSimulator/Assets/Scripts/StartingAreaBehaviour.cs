@@ -12,6 +12,7 @@ public class StartingAreaBehaviour : MonoBehaviour {
 			slappingBehaviour.StopSlapping();
 			slappingBehaviour.ClearSlappingData();
 			disableTrigger.RevertCollision();
+			print ("ENTER");
 		}
 	}
 
@@ -22,6 +23,7 @@ public class StartingAreaBehaviour : MonoBehaviour {
 			slappingBehaviour.StopSlapping();
 			slappingBehaviour.ClearSlappingData();
 			disableTrigger.RevertCollision();
+			print ("STAY");
 		}
 	}
 

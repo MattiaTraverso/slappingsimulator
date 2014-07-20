@@ -131,7 +131,10 @@ public class TargetBehaviour : MonoBehaviour {
 		animation.Stop ();
 		animation.enabled = false;
 		tweenMotionBlur.enabled = true;
-		if (followCamera) followCamera.SetActive(true);
+		if (followCamera) {
+			followCamera.SetActive(true);
+			followCamera.GetComponent<SmoothFollow>().target = changeRigidbodies.rigids[0].transform;
+		}
 		//Time.timeScale = 0.3f;
 
 		collider.isTrigger = true;

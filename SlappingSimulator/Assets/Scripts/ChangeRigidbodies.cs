@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class ChangeRigidbodies : MonoBehaviour {
 	public Rigidbody[] rigids;
 
+	public GameObject follow;
+
 	void Start () 
 	{
 		ActivateGravity(false);

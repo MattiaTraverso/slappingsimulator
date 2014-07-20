@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Blink : MonoBehaviour {
-	void Start() {	
+	public void Initialize() {	
+		iTween.Stop (gameObject);
 		renderer.material.color -= new Color(0f, 0f, 0f, 1f);
 		iTween.ValueTo (gameObject, iTween.Hash ("from", 0f, "to", 1f, "onupdate", "changeOpacity", "ease", iTween.EaseType.easeInOutSine, "time", 0.5f, "looptype", iTween.LoopType.pingPong));
 	}	

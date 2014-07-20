@@ -146,6 +146,7 @@ public class TargetBehaviour : MonoBehaviour {
 					cameraPlane.renderer.enabled = true;
 					cameraPlane.GetComponent<GetWebCam>().PlayTexture();
 					smile.SetActive(true);
+					smile.GetComponent<Blink>().Initialize();
 					joint.SetActive(false);
 					followCamera.SetActive(false);
 					isTakingPicture = true;

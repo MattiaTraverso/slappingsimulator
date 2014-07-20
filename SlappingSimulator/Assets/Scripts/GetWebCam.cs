@@ -21,33 +21,22 @@ public class GetWebCam : MonoBehaviour {
 		
 	}
 
-	void Update () {
-		if (isPaused)
-			return;
-
-		if (Input.GetKey(KeyCode.Space))
+	public Texture2D GimmePic()
+	{
+		CameraTexture.Pause();
+		
+		Texture2D texture = new Texture2D(200, 400);
+		
+		for (int i = 0; i < 200; i++)
 		{
-			isPaused = true;
-
-			CameraTexture.Pause();
-//
-//			print ("WIDTH "+CameraTexture.width); //1280
-//			print("HEIGHT "+CameraTexture.height); //720
-
-			Texture2D texture = new Texture2D(200, 400);
-
-			for (int i = 0; i < 200; i++)
+			for (int j = 0; j < 400; j++)
 			{
-				for (int j = 0; j < 400; j++)
-				{
-					//print (CameraTexture.GetPixel(i, j));//i + (1280 - 200) / 2, j + (720 - 400) / 2));
-					texture.SetPixel(i, j, CameraTexture.GetPixel(i + (1280 - 200) / 2, j + (720 - 400) / 2));
-				}
+				texture.SetPixel(i, j, CameraTexture.GetPixel(i + (1280 - 200) / 2, j + (720 - 400) / 2));
 			}
-
-			texture.Apply ();
-
-			plane2.renderer.material.SetTexture ("_MainTex", texture);
 		}
+		
+		texture.Apply ();
+		
+		return texture;
 	}
 }

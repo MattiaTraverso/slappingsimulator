@@ -13,11 +13,23 @@ public class TargetBehaviour : MonoBehaviour {
 	public AudioClip hitClip;
 	public AudioClip BELLALAMUSICABELLA;
 
+	public Material LUI;
+
+	public GameObject cameraPlane;
+	public GameObject joint;
+
 	int theRecord = 0;
+
+	bool hasDoneRecord = false;
+
+	bool isTakingPicture = false;
 
 	float actualTimer;
 	bool wasHit;
 	public float TIME_TO_RESTART;
+	public float TIME_TO_PICTURE;
+
+	float pictureTimer = 0f;
 
 	public float STRENGTH;
 	
@@ -52,6 +64,7 @@ public class TargetBehaviour : MonoBehaviour {
 		if ((int)((averageSpeed + averageVolume / 20f) * 100f) > theRecord)
 		{
 			record = true;
+			hasDoneRecord = true;
 			theRecord = (int)((averageSpeed + averageVolume / 20f) * 100f);
 			GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().ActivateScore((averageSpeed + averageVolume / 20f) * 100f, true);
 			GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
@@ -109,12 +122,37 @@ public class TargetBehaviour : MonoBehaviour {
 			{
 				actualTimer = 0f;
 				wasHit = false;
-				GameObject.Find ("Restart").GetComponent<Restart>().RestartGame();
+
+				if (!hasDoneRecord)
+					GameObject.Find ("Restart").GetComponent<Restart>().RestartGame();
+				else
+				{
+					GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
+					cameraPlane.SetActive(true);
+					joint.SetActive(false);
+					followCamera.SetActive(false);
+					isTakingPicture = true;
+				}
 				return;
+			}
+		}
+
+		else if (isTakingPicture)
+		{
+			pictureTimer += Time.deltaTime;
+
+			if (pictureTimer > TIME_TO_PICTURE)
+			{
+				pictureTimer = 0f;
+
+				Texture2D LACACCA = cameraPlane.GetComponent<GetWebCam>().GimmePic();
+
+				LUI.SetTexture("_MainTex", LACACCA);
 			}
 		}
 	}
 	public void Restart() {
+		joint.SetActive(true);
 		slappingBehaviour.StopSlapping();
 		slappingBehaviour.ClearSlappingData();
 		changeRigidbodies.ActivateGravity(false);

@@ -16,6 +16,7 @@ public class TargetBehaviour : MonoBehaviour {
 	public Material LUI;
 
 	public GameObject cameraPlane;
+	public GameObject smile;
 	public GameObject joint;
 
 	int theRecord = 0;
@@ -105,6 +106,7 @@ public class TargetBehaviour : MonoBehaviour {
 
 		jointOrientation.Vibrate();
 		changeClip.ChangeClip(hitClip, 1f);
+		animation.Stop ();
 		animation.enabled = false;
 		tweenMotionBlur.enabled = true;
 		if (followCamera) followCamera.SetActive(true);
@@ -128,7 +130,8 @@ public class TargetBehaviour : MonoBehaviour {
 				else
 				{
 					GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
-					cameraPlane.SetActive(true);
+					cameraPlane.renderer.enabled = true;
+					smile.SetActive(true);
 					joint.SetActive(false);
 					followCamera.SetActive(false);
 					isTakingPicture = true;
@@ -143,11 +146,18 @@ public class TargetBehaviour : MonoBehaviour {
 
 			if (pictureTimer > TIME_TO_PICTURE)
 			{
+				isTakingPicture = false;
+
 				pictureTimer = 0f;
 
 				Texture2D LACACCA = cameraPlane.GetComponent<GetWebCam>().GimmePic();
 
 				LUI.SetTexture("_MainTex", LACACCA);
+
+				cameraPlane.renderer.enabled = false;
+				smile.SetActive(false);
+
+				GameObject.Find ("Restart").GetComponent<Restart>().RestartGame();
 			}
 		}
 	}
@@ -161,6 +171,7 @@ public class TargetBehaviour : MonoBehaviour {
 		Camera.main.gameObject.GetComponent<CameraShake>().enabled = false;
 		changeClip.ChangeClip(BELLALAMUSICABELLA, 1f);
 
+		animation.Play ();
 		animation.enabled = true;
 		tweenMotionBlur.enabled = false;
 

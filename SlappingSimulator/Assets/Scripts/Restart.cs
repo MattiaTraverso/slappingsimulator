@@ -26,5 +26,8 @@ public class Restart : MonoBehaviour {
 		GameObject.Find ("Target").GetComponent<DisableTrigger>().RevertCollision(true);
 
 		GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
+
+		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Stop ();
+		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Play ();
 	}
 }

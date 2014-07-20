@@ -24,8 +24,8 @@ public class SlappingBehaviour : MonoBehaviour {
 	float endTime = 0f;
 
 	//DEBUG
-	public GUIText debugText;
-	public GUIText recordText;
+	//public GUIText debugText;
+	//public GUIText recordText;
 
 	void Start () {
 		oldRotation = transform.rotation.eulerAngles;
@@ -102,16 +102,16 @@ public class SlappingBehaviour : MonoBehaviour {
 
 		if (average > record)
 		{
-			debugText.text = average.ToString();
+			//debugText.text = average.ToString();
 			record = average;
 		}
 
 		else
 		{
-			debugText.text = average.ToString();
+			//debugText.text = average.ToString();
 		}
 
-		recordText.text = record.ToString();
+		//recordText.text = record.ToString();
 
 		return average;
 	}

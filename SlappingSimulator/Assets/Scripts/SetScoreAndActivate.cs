@@ -3,9 +3,11 @@ using System.Collections;
 
 public class SetScoreAndActivate : MonoBehaviour {
 
-	public void ActivateScore(float s) {
+	public void ActivateScore(float s, bool isRecord = false) {
 		int score = (int)s;
-		GetComponent<TextMesh>().text = score.ToString()+"!!!!!!!!!";
+		if (!isRecord) GetComponent<TextMesh>().text = score.ToString()+"!!!!!!!!!";
+		else GetComponent<TextMesh>().text = "RECORD!!!!\n"+score.ToString()+"!!!!!!!!!"+"\nRECORD!!!!";
+
 		iTween.RotateBy (gameObject, iTween.Hash("y", Random.Range(Random.Range (-0.8f, -0.4f), Random.Range (0.4f, 0.8f)), "easetype", iTween.EaseType.easeInSine, "looptype", iTween.LoopType.pingPong, "time", .4f));
 		iTween.RotateBy (gameObject, iTween.Hash("z", Random.Range(Random.Range (-0.8f, -0.4f), Random.Range (0.4f, 0.8f)), "easetype", iTween.EaseType.easeInSine, "looptype", iTween.LoopType.pingPong, "time", .4f));
 

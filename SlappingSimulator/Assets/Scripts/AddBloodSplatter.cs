@@ -4,31 +4,14 @@ using System.Collections;
 public class AddBloodSplatter : MonoBehaviour {
 	public GameObject blood;
 	int timer = 0;
-	float actualTimer;
-	bool wasHit;
-	public float TIME_TO_RESTART;
 
 	void Update() 
 	{
 		timer++;
-		if (wasHit) {
-			actualTimer += Time.deltaTime;
-
-			if (actualTimer > TIME_TO_RESTART)
-			{
-				GameObject.Find ("Restart").GetComponent<Restart>().RestartGame();
-				timer = 0;
-				actualTimer = 0f;
-				wasHit = false;
-				return;
-			}
-		}
 	}
 
 	void OnCollisionEnter(Collision collision)
 	{
-		wasHit = true;
-
 		if (timer < 25)
 			return;
 

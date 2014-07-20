@@ -13,10 +13,19 @@ public class TargetBehaviour : MonoBehaviour {
 	public AudioClip hitClip;
 	public AudioClip BELLALAMUSICABELLA;
 
+	int theRecord = 0;
+
+	float actualTimer;
+	bool wasHit;
+	public float TIME_TO_RESTART;
+
 	public float STRENGTH;
 	
 	void OnCollisionEnter(Collision collision) {
 		if(!enabled)
+			return;
+
+		if(wasHit)
 			return;
 
 		if (collision.gameObject.name != "Box")
@@ -27,21 +36,47 @@ public class TargetBehaviour : MonoBehaviour {
 		float averageVolume = slappingBehaviour.CalculateAverageVolume();
 		float power = averageSpeed + averageVolume / 20f;
 
-		GameObject[] spectators = GameObject.FindGameObjectsWithTag("Spectator");
-		foreach(GameObject g in spectators)
-		{
-			g.GetComponent<LookAtGuy>().StartFancy(power);
-		}
+		//print (power);
 
 		GameObject.Find ("Debug").GetComponent<DebugValues>().DrawValues(averageSpeed, averageVolume / 20f);
 
-		GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().ActivateScore((averageSpeed + averageVolume / 20f) * 100f);
+
 
 		if (float.IsNaN(power)) {
 			power = 1;
 			print("NAN");
 		}
 
+		bool record = false;
+
+		if ((int)((averageSpeed + averageVolume / 20f) * 100f) > theRecord)
+		{
+			record = true;
+			theRecord = (int)((averageSpeed + averageVolume / 20f) * 100f);
+			GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().ActivateScore((averageSpeed + averageVolume / 20f) * 100f, true);
+			GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
+			GameObject.Find("WOW").audio.Play ();
+		}
+		else if (power < 0.85f)
+		{
+			GameObject.Find("LowShot").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
+			GameObject.Find ("Boo").audio.Play ();
+			GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().ActivateScore((averageSpeed + averageVolume / 20f) * 100f);
+		}
+
+		else 
+		{
+			GameObject.Find ("MediumShot").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
+			GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().ActivateScore((averageSpeed + averageVolume / 20f) * 100f);
+			GameObject.Find ("Good").audio.Play ();
+		}
+
+		GameObject[] spectators = GameObject.FindGameObjectsWithTag("Spectator");
+		foreach(GameObject g in spectators)
+		{
+			if (!record) g.GetComponent<LookAtGuy>().StartFancy(power);
+			else g.GetComponent<LookAtGuy>().StartFancy(power * 10f);
+		}
 //		print (averageSpeed);
 //		print (averageVolume / 20f);
 
@@ -55,9 +90,6 @@ public class TargetBehaviour : MonoBehaviour {
 		Camera.main.gameObject.GetComponent<CameraShake>().enabled = true;
 		Camera.main.gameObject.GetComponent<CameraShake>().Shake (power / 3f);
 
-		//TODO: Add different sounds
-		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
-
 		jointOrientation.Vibrate();
 		changeClip.ChangeClip(hitClip, 1f);
 		animation.enabled = false;
@@ -66,10 +98,22 @@ public class TargetBehaviour : MonoBehaviour {
 		//Time.timeScale = 0.3f;
 
 		collider.isTrigger = true;
-
-		enabled = false;
+		wasHit = true;
 	}
 
+	void Update () {
+		if (wasHit) {
+			actualTimer += Time.deltaTime;
+			
+			if (actualTimer > TIME_TO_RESTART)
+			{
+				actualTimer = 0f;
+				wasHit = false;
+				GameObject.Find ("Restart").GetComponent<Restart>().RestartGame();
+				return;
+			}
+		}
+	}
 	public void Restart() {
 		slappingBehaviour.StopSlapping();
 		slappingBehaviour.ClearSlappingData();

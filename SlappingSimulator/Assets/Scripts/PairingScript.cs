@@ -13,6 +13,7 @@ public class PairingScript : MonoBehaviour {
 	public DisableTrigger disableTrigger;
 
 	public GameObject text;
+	public GameObject trophy;
 
 	bool hasPaired;
 	bool isActive;
@@ -70,7 +71,9 @@ public class PairingScript : MonoBehaviour {
 
 			joint.GetComponent<JointOrientation>().updateReference = true;
 
+			TargetBehaviour.DIRT_FIX = true;
 
+			trophy.SetActive(false);
 		}
 	}
 }

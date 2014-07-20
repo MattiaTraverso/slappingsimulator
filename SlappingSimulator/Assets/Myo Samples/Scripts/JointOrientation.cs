@@ -13,6 +13,8 @@ public class JointOrientation : MonoBehaviour
     // This object must have a ThalmicMyo script attached.
     public GameObject myo = null;
 
+	public TargetBehaviour tb;
+
 	public bool updateReference;
 
     // A rotation that compensates for the Myo armband's orientation parallel to the ground, i.e. yaw.
@@ -65,6 +67,12 @@ public class JointOrientation : MonoBehaviour
             // the roll value matches the reference.
             Vector3 referenceZeroRoll = computeZeroRollVector (myo.transform.forward);
             _referenceRoll = rollFromZero (referenceZeroRoll, myo.transform.forward, myo.transform.up);
+
+			if (TargetBehaviour.DIRT_FIX)
+			{
+				TargetBehaviour.DIRT_FIX = false;
+				tb.SetAreasActive();
+			}
         }
 
         // Current zero roll vector and roll value.

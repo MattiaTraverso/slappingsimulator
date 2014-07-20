@@ -46,6 +46,9 @@ public class TargetBehaviour : MonoBehaviour {
 
 	public float STRENGTH;
 
+
+	public static bool DIRT_FIX;
+
 	void Start() {
 		cameraPlane.GetComponent<GetWebCam>().Initialize();
 		originalPosition = originalTransform.position;
@@ -213,9 +216,11 @@ public class TargetBehaviour : MonoBehaviour {
 		followCamera.SetActive(false);
 		collider.isTrigger = false;
 
+		enabled = true;
+	}
+
+	public void SetAreasActive() {
 		area1.SetActive(true);
 		area2.SetActive(true);
-
-		enabled = true;
 	}
 }

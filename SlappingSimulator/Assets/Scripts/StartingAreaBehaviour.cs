@@ -4,15 +4,17 @@ using System.Collections;
 public class StartingAreaBehaviour : MonoBehaviour {
 	public SlappingBehaviour slappingBehaviour;
 	public DisableTrigger disableTrigger;
+	int timer = 0;
+
 
 	void OnTriggerEnter(Collider collider)
 	{
 		if (collider.gameObject.name == "Box")
-		{
+		{ 
 			slappingBehaviour.StopSlapping();
 			slappingBehaviour.ClearSlappingData();
-			disableTrigger.RevertCollision();
-			print ("ENTER");
+			disableTrigger.RevertCollision(true);
+			//print ("ENTER");
 		}
 	}
 
@@ -22,14 +24,18 @@ public class StartingAreaBehaviour : MonoBehaviour {
 		{
 			slappingBehaviour.StopSlapping();
 			slappingBehaviour.ClearSlappingData();
-			disableTrigger.RevertCollision();
-			print ("STAY");
+			disableTrigger.RevertCollision(true);
+			//print ("STAY");
 		}
 	}
 
 	void OnTriggerExit(Collider collider)
 	{
 		if (collider.gameObject.name == "Box")
+		{
+			//print ("EXIT");
+			disableTrigger.RevertCollision();
 			slappingBehaviour.StartSlapping();
+		}
 	}
 }

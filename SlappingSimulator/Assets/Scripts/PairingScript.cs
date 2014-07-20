@@ -20,6 +20,7 @@ public class PairingScript : MonoBehaviour {
 
 		text.SetActive(true);
 
+		//TODO:UNCOMMENT
 		joint.SetActive(false);
 		speech.SetActive(false);
 		targets.SetActive(false);
@@ -59,6 +60,8 @@ public class PairingScript : MonoBehaviour {
 			timer = 0f;
 
 			hasPaired = true;
+
+			joint.GetComponent<JointOrientation>().updateReference = true;
 		}
 	}
 }

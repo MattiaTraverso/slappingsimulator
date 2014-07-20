@@ -18,9 +18,10 @@ public class AddBloodSplatter : MonoBehaviour {
 		timer = 0;
 		ContactPoint contact = collision.contacts[0];
 		Vector3 pos = new Vector3(contact.point.x, contact.point.y, blood.transform.position.z);
-		GameObject newBlood = GameObject.Instantiate(blood, contact.point, Quaternion.identity) as GameObject;
+		GameObject newBlood = GameObject.Instantiate(blood, pos, blood.transform.rotation) as GameObject;
 		newBlood.SetActive(true);
-		newBlood.GetComponent<AppearEffectBlood>().Initialize();
+		GameObject.Find ("Splat").audio.Play ();
+//		newBlood.GetComponent<AppearEffectBlood>().Initialize();
 
 	}
 }

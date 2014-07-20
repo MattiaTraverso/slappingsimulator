@@ -4,8 +4,8 @@ using System.Collections;
 public class AppearEffectBlood : MonoBehaviour {
 	
 	// Update is called once per frame
-	public void Initialize () {
-		iTween.ValueTo (gameObject, iTween.Hash ("from", 0f, "to", 1f, "onupdate", "changeScale", "ease", iTween.EaseType.punch, "time", 0.3f));
+	void Start () {
+		iTween.ValueTo (gameObject, iTween.Hash ("from", 0f, "to", 1f, "onupdate", "changeScale", "ease", iTween.EaseType.punch, "time", .4f));
 	}
 	
 	// Update is called once per frame

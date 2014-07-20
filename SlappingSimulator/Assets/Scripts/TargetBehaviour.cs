@@ -33,7 +33,11 @@ public class TargetBehaviour : MonoBehaviour {
 	float pictureTimer = 0f;
 
 	public float STRENGTH;
-	
+
+	void Start() {
+		cameraPlane.GetComponent<GetWebCam>().Initialize();
+	}
+
 	void OnCollisionEnter(Collision collision) {
 		if(!enabled)
 			return;
@@ -131,6 +135,7 @@ public class TargetBehaviour : MonoBehaviour {
 				{
 					GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
 					cameraPlane.renderer.enabled = true;
+					cameraPlane.GetComponent<GetWebCam>().PlayTexture();
 					smile.SetActive(true);
 					joint.SetActive(false);
 					followCamera.SetActive(false);

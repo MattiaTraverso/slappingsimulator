@@ -7,10 +7,6 @@ public class GetWebCam : MonoBehaviour {
 	bool isPaused;
 	public GameObject plane2;
 
-	void Start() {
-		Initialize();
-	}
-
 	public void Initialize(){
 		WebCamDevice[] devices = WebCamTexture.devices;
 		string camName = devices[0].name;
@@ -19,6 +15,11 @@ public class GetWebCam : MonoBehaviour {
 		CameraTexture.Play();
 		cameraPlane.renderer.material.SetTexture("_MainTex", CameraTexture);
 		
+	}
+
+	public void PlayTexture()
+	{
+		CameraTexture.Play();
 	}
 
 	public Texture2D GimmePic()

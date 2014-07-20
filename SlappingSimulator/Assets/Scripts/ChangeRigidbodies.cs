@@ -18,6 +18,7 @@ public class ChangeRigidbodies : MonoBehaviour {
 			{
 				rigid.Sleep();
 				rigid.velocity = Vector3.zero;
+				rigid.angularVelocity = Vector3.zero;
 				rigid.isKinematic = true;
 			}
 		}

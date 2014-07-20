@@ -22,5 +22,7 @@ public class Restart : MonoBehaviour {
 
 		Camera.main.gameObject.GetComponent<MotionBlur>().blurAmount = 0.01f;
 		Camera.main.gameObject.GetComponent<TweenMotionBlur>().enabled = false;
+
+		GameObject.Find ("Target").GetComponent<DisableTrigger>().RevertCollision(true);
 	}
 }

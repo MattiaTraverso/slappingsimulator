@@ -3,8 +3,8 @@ using System.Collections;
 
 public class DisableTrigger : MonoBehaviour {
 
-	public void RevertCollision()
+	public void RevertCollision(bool b = false)
 	{
-		collider.isTrigger = false;
+		collider.isTrigger = b;
 	}
 }

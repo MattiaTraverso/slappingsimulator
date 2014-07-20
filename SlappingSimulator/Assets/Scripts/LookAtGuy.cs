@@ -21,21 +21,20 @@ public class LookAtGuy : MonoBehaviour {
 		iTween.RotateBy (gameObject, iTween.Hash ("y", Random.Range (-2f, 2f), "looptype", iTween.LoopType.pingPong, "easetype", iTween.EaseType.easeInOutQuad, "time", 6f));
 		//iTween.MoveBy(gameObject, iTween.Hash ("y", Random.Range (2f, 8f), "time", .5f, "easetype", iTween.EaseType.easeInOutElastic, "delay", Random.Range(0f, 10f)));	
 	}
-
-	void Update() {
-		if (!changed)
-			if (TargetBehaviour.FLIP_OUT)
-			{
-				changed = true;
-				StartFancy();
-			}
+	
+	public void StartFancy (float amount) {
+		iTween.Stop(gameObject);
+		amount *= 2f;
+		iTween.RotateBy (gameObject, iTween.Hash ("y", Random.Range (-20f * amount, 20f * amount), "looptype", iTween.LoopType.pingPong, "easetype", iTween.EaseType.easeInOutQuad, "time", 3.5f));
+		iTween.MoveBy(gameObject, iTween.Hash ("y", Random.Range (2f * amount, 8f * amount), "time", .5f, "easetype", iTween.EaseType.easeInOutElastic, "delay", Random.Range(0f, 10f), "oncomplete", "waitamoment", "oncompleteparams", amount));	
 
 	}
 
-	public void StartFancy () {
-		iTween.Stop(gameObject);
-		iTween.RotateBy (gameObject, iTween.Hash ("y", Random.Range (-20f, 20f), "looptype", iTween.LoopType.pingPong, "easetype", iTween.EaseType.easeInOutQuad, "time", 3.5f));
-		iTween.MoveBy(gameObject, iTween.Hash ("y", Random.Range (2f, 8f), "time", .5f, "easetype", iTween.EaseType.easeInOutElastic, "delay", Random.Range(0f, 10f)));	
+	IEnumerator waitamoment(float amount) {
+		//iTween.Stop (gameObject);
+		yield return new WaitForSeconds(Random.Range (1f, 2f));
+
+		iTween.MoveBy(gameObject, iTween.Hash ("y", Random.Range (1f * amount, 4f * amount), "time", .5f, "easetype", iTween.EaseType.easeInOutElastic, "delay", Random.Range(0f, 10f), "oncomplete", "waitamoment", "oncompleteparams", amount));	
 
 	}
 
@@ -45,7 +44,6 @@ public class LookAtGuy : MonoBehaviour {
 		transform.rotation = originalRotation;
 		rigidbody.velocity = Vector3.zero;
 		changed = false;
-		TargetBehaviour.FLIP_OUT = false;
 		Start ();
 	}
 

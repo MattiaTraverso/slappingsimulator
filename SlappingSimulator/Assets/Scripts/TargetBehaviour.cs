@@ -14,9 +14,7 @@ public class TargetBehaviour : MonoBehaviour {
 	public AudioClip BELLALAMUSICABELLA;
 
 	public float STRENGTH;
-
-	public static bool FLIP_OUT;
-
+	
 	void OnCollisionEnter(Collision collision) {
 		if(!enabled)
 			return;
@@ -24,12 +22,16 @@ public class TargetBehaviour : MonoBehaviour {
 		if (collision.gameObject.name != "Box")
 			return;
 
-		FLIP_OUT = true;
-
 		slappingBehaviour.StopSlapping();
 		float averageSpeed = slappingBehaviour.CalculateAverageSpeed();
 		float averageVolume = slappingBehaviour.CalculateAverageVolume();
 		float power = averageSpeed + averageVolume / 20f;
+
+		GameObject[] spectators = GameObject.FindGameObjectsWithTag("Spectator");
+		foreach(GameObject g in spectators)
+		{
+			g.GetComponent<LookAtGuy>().StartFancy(power);
+		}
 
 		GameObject.Find ("Debug").GetComponent<DebugValues>().DrawValues(averageSpeed, averageVolume / 20f);
 
@@ -69,8 +71,6 @@ public class TargetBehaviour : MonoBehaviour {
 	}
 
 	public void Restart() {
-		FLIP_OUT = false;
-
 		slappingBehaviour.StopSlapping();
 		slappingBehaviour.ClearSlappingData();
 		changeRigidbodies.ActivateGravity(false);

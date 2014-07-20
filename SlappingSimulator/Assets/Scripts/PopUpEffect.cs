@@ -82,7 +82,7 @@ public class PopUpEffect : MonoBehaviour {
 
 	public void DieOff() {
 		//print ("TACCI MIA");
-		iTween.Stop();
+		iTween.Stop(gameObject);
 		audio.Stop ();
 		isDead = true;
 		iTween.ValueTo (gameObject, iTween.Hash ("from", 0.45f, "to", 0, "onupdate", "changeScale", "time", 0.15f, "oncomplete", "KillMe"));
@@ -94,7 +94,7 @@ public class PopUpEffect : MonoBehaviour {
 
 	public void Restart() {
 		enabled = true;
-		iTween.Stop ();
+		iTween.Stop (gameObject);
 		ScaleUp();
 	}
 }

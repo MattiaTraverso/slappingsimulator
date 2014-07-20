@@ -4,6 +4,7 @@ public class CameraShake : MonoBehaviour
 {
 	private Vector3 originPosition;
 	private Quaternion originRotation;
+
 	public float shake_decay;
 	public float shake_intensity;
 
@@ -14,7 +15,7 @@ public class CameraShake : MonoBehaviour
 //	}
 	
 	void Update (){
-		if (shake_intensity > 0){
+		if (shake_intensity > 0f){
 			transform.position = originPosition + Random.insideUnitSphere * shake_intensity;
 			transform.rotation = new Quaternion(
 				originRotation.x + Random.Range (-shake_intensity,shake_intensity) * .2f,

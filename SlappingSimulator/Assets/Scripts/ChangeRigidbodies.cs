@@ -17,11 +17,12 @@ public class ChangeRigidbodies : MonoBehaviour {
 			if (rigid != null)
 			{
 				rigid.Sleep();
+				rigid.velocity = Vector3.zero;
 				rigid.isKinematic = true;
 			}
 		}
 	}
-
+	
 	public void AddForce(Vector3 force)
 	{
 		foreach (Rigidbody rigid in rigids) {

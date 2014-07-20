@@ -47,11 +47,13 @@ public class TargetBehaviour : MonoBehaviour {
 
 		Camera.main.gameObject.GetComponent<CameraShake>().enabled = true;
 		Camera.main.gameObject.GetComponent<CameraShake>().Shake (power / 3f);
+
+		//TODO: Add different sounds
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
 		jointOrientation.Vibrate();
 		changeClip.ChangeClip(hitClip);
-		Destroy (animation);
+		animation.enabled = false;
 		tweenMotionBlur.enabled = true;
 		if (followCamera) followCamera.SetActive(true);
 		//Time.timeScale = 0.3f;
@@ -59,5 +61,24 @@ public class TargetBehaviour : MonoBehaviour {
 		collider.isTrigger = true;
 
 		enabled = false;
+	}
+
+	public void Restart() {
+		FLIP_OUT = false;
+
+		slappingBehaviour.StopSlapping();
+		changeRigidbodies.ActivateGravity(false);
+		changeRigidbodies.Sleep();
+
+		Camera.main.gameObject.GetComponent<CameraShake>().enabled = false;
+		changeClip.ChangeClip(null);
+
+		animation.enabled = true;
+		tweenMotionBlur.enabled = false;
+
+		followCamera.SetActive(false);
+		collider.isTrigger = false;
+
+		enabled = true;
 	}
 }

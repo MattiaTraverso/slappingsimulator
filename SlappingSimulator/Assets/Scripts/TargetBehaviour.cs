@@ -13,6 +13,13 @@ public class TargetBehaviour : MonoBehaviour {
 	public AudioClip hitClip;
 	public AudioClip BELLALAMUSICABELLA;
 
+	public GameObject manichino;
+
+	public GameObject oldManichino;
+	public Transform originalTransform;
+	Vector3 originalPosition;
+	Quaternion originalRotation;
+
 	public Material LUI;
 
 	public GameObject cameraPlane;
@@ -36,6 +43,8 @@ public class TargetBehaviour : MonoBehaviour {
 
 	void Start() {
 		cameraPlane.GetComponent<GetWebCam>().Initialize();
+		originalPosition = originalTransform.position;
+		originalRotation = originalTransform.rotation;
 	}
 
 	void OnCollisionEnter(Collision collision) {
@@ -168,6 +177,15 @@ public class TargetBehaviour : MonoBehaviour {
 	}
 	public void Restart() {
 		joint.SetActive(true);
+	
+		GameObject newManichino = GameObject.Instantiate(manichino, manichino.transform.position, manichino.transform.rotation) as GameObject;
+		changeRigidbodies = newManichino.GetComponent<ChangeRigidbodies>();
+		animation = newManichino.GetComponent<Animation>();
+
+		Destroy (oldManichino);
+
+		oldManichino = newManichino;
+
 		slappingBehaviour.StopSlapping();
 		slappingBehaviour.ClearSlappingData();
 		changeRigidbodies.ActivateGravity(false);

@@ -27,8 +27,8 @@ public class Restart : MonoBehaviour {
 
 		GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
 
-		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Stop ();
-		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Play ();
+//		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Stop ();
+//		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Play ();
 
 //		GameObject[] bones = GameObject.FindGameObjectsWithTag("Bone");
 //		foreach(GameObject g in bones) g.GetComponent<ResetBone>().Reset();

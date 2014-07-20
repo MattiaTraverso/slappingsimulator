@@ -2,7 +2,24 @@ fileFormatVersion: 2
 guid: ad07224cf129e415da83e1ade3d7f786
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - slappingBehaviour: {instanceID: 0}
+  - changeRigidbodies: {instanceID: 0}
+  - jointOrientation: {instanceID: 0}
+  - changeClip: {instanceID: 0}
+  - tweenMotionBlur: {instanceID: 0}
+  - popupEffect: {instanceID: 0}
+  - followCamera: {instanceID: 0}
+  - animation: {instanceID: 0}
+  - hitClip: {instanceID: 0}
+  - BELLALAMUSICABELLA: {instanceID: 0}
+  - manichino: {fileID: 100000, guid: a9d90364af6dc4a6daa9e6dd258be96a, type: 2}
+  - oldManichino: {instanceID: 0}
+  - originalTransform: {instanceID: 0}
+  - LUI: {instanceID: 0}
+  - cameraPlane: {instanceID: 0}
+  - smile: {instanceID: 0}
+  - joint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

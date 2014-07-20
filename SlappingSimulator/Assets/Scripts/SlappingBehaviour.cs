@@ -86,8 +86,8 @@ public class SlappingBehaviour : MonoBehaviour {
 	}
 
 	public void ClearSlappingData() {
-		rotationDegrees.Clear();
-		volumes.Clear ();
+		if (rotationDegrees != null) rotationDegrees.Clear();
+		if (volumes != null) volumes.Clear ();
 		startingTime = 0f;
 		endTime = 0f;
 	}

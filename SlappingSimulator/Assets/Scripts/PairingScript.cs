@@ -9,6 +9,9 @@ public class PairingScript : MonoBehaviour {
 	public GameObject targets;
 	public GameObject speech;
 
+	public SlappingBehaviour slappingBehaviour;
+	public DisableTrigger disableTrigger;
+
 	public GameObject text;
 
 	bool hasPaired;
@@ -55,6 +58,10 @@ public class PairingScript : MonoBehaviour {
 			text.SetActive(false);
 			speech.SetActive(true);
 
+			slappingBehaviour.StopSlapping();
+			slappingBehaviour.ClearSlappingData();
+			disableTrigger.RevertCollision(true);
+
 			isActive = false;
 
 			timer = 0f;
@@ -62,6 +69,8 @@ public class PairingScript : MonoBehaviour {
 			hasPaired = true;
 
 			joint.GetComponent<JointOrientation>().updateReference = true;
+
+
 		}
 	}
 }

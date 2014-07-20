@@ -13,6 +13,8 @@ public class JointOrientation : MonoBehaviour
     // This object must have a ThalmicMyo script attached.
     public GameObject myo = null;
 
+	public bool updateReference;
+
     // A rotation that compensates for the Myo armband's orientation parallel to the ground, i.e. yaw.
     // Once set, the direction the Myo armband is facing becomes "forward" within the program.
     // Set by making the fingers spread pose or pressing "r".
@@ -34,7 +36,7 @@ public class JointOrientation : MonoBehaviour
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
 		
         // Update references when the pose becomes fingers spread or the q key is pressed.
-        bool updateReference = false;
+        updateReference = false;
         if (thalmicMyo.pose != _lastPose) {
             _lastPose = thalmicMyo.pose;
 

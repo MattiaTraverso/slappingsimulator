@@ -4,7 +4,7 @@ using System.Collections;
 public class Restart : MonoBehaviour {
 
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space))
+		if (Input.GetKeyDown (KeyCode.Backspace))
 		{
 			RestartGame();
 		}
@@ -27,6 +27,7 @@ public class Restart : MonoBehaviour {
 
 		GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
 
+		GameObject.Find ("PairingArm").GetComponent<PairingScript>().Activate();
 //		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Stop ();
 //		GameObject.Find ("slap_me_pls_model_animated").GetComponent<Animation>().Play ();
 

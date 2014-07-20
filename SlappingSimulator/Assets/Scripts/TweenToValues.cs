@@ -5,6 +5,7 @@ public class TweenToValues : MonoBehaviour {
 	SmoothFollow smoothFollow;
 	float timer = 0f;
 	bool done;
+	public PairingScript pairing;
 	public GameObject mainCamera;
 
 	void Update() {
@@ -14,6 +15,7 @@ public class TweenToValues : MonoBehaviour {
 				enabled = false;
 
 				mainCamera.SetActive(true);
+				pairing.Activate();
 				transform.parent.gameObject.SetActive(false);
 			}
 			return;

@@ -33,6 +33,8 @@ public class TargetBehaviour : MonoBehaviour {
 
 		GameObject.Find ("Debug").GetComponent<DebugValues>().DrawValues(averageSpeed, averageVolume / 20f);
 
+		GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().ActivateScore((averageSpeed + averageVolume / 20f) * 100f);
+
 		if (float.IsNaN(power)) {
 			power = 1;
 			print("NAN");

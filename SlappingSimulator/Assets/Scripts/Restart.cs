@@ -9,7 +9,7 @@ public class Restart : MonoBehaviour {
 			RestartGame();
 		}
 	}
-	void RestartGame() {
+	public void RestartGame() {
 		iTween.Stop ();
 
 		GameObject.Find ("Target").GetComponent<TargetBehaviour>().Restart();
@@ -24,5 +24,7 @@ public class Restart : MonoBehaviour {
 		Camera.main.gameObject.GetComponent<TweenMotionBlur>().enabled = false;
 
 		GameObject.Find ("Target").GetComponent<DisableTrigger>().RevertCollision(true);
+
+		GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().Reset();
 	}
 }

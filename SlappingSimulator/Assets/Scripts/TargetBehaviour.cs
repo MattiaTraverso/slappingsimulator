@@ -15,6 +15,8 @@ public class TargetBehaviour : MonoBehaviour {
 
 	public GameObject manichino;
 
+	public GameObject trophy;
+
 	public GameObject oldManichino;
 	public Transform originalTransform;
 	Vector3 originalPosition;
@@ -82,6 +84,7 @@ public class TargetBehaviour : MonoBehaviour {
 		{
 			record = true;
 			hasDoneRecord = true;
+			trophy.SetActive(true);
 			theRecord = (int)((averageSpeed + averageVolume / 20f) * 100f);
 			GameObject.Find ("Score").GetComponent<SetScoreAndActivate>().ActivateScore((averageSpeed + averageVolume / 20f) * 100f, true);
 			GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
@@ -184,6 +187,7 @@ public class TargetBehaviour : MonoBehaviour {
 		}
 	}
 	public void Restart() {
+		trophy.SetActive(true);
 		joint.SetActive(true);
 	
 		GameObject newManichino = GameObject.Instantiate(manichino, manichino.transform.position, manichino.transform.rotation) as GameObject;

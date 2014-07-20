@@ -11,6 +11,7 @@ public class TargetBehaviour : MonoBehaviour {
 	public GameObject followCamera;
 	public Animation animation;
 	public AudioClip hitClip;
+	public AudioClip BELLALAMUSICABELLA;
 
 	public float STRENGTH;
 
@@ -52,7 +53,7 @@ public class TargetBehaviour : MonoBehaviour {
 		GameObject.Find ("HardSlap").GetComponent<PlayRandomSoundFromArray>().PlayRandomSound();
 
 		jointOrientation.Vibrate();
-		changeClip.ChangeClip(hitClip);
+		changeClip.ChangeClip(hitClip, 1f);
 		animation.enabled = false;
 		tweenMotionBlur.enabled = true;
 		if (followCamera) followCamera.SetActive(true);
@@ -71,7 +72,7 @@ public class TargetBehaviour : MonoBehaviour {
 		changeRigidbodies.Sleep();
 
 		Camera.main.gameObject.GetComponent<CameraShake>().enabled = false;
-		changeClip.ChangeClip(null);
+		changeClip.ChangeClip(BELLALAMUSICABELLA, 1f);
 
 		animation.enabled = true;
 		tweenMotionBlur.enabled = false;

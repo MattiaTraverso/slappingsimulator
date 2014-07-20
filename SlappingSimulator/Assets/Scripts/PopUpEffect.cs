@@ -43,7 +43,7 @@ public class PopUpEffect : MonoBehaviour {
 	}
 
 	void idle() {
-		if (currentInsults.Count < 1)
+		if (currentInsults.Count == 0)
 			currentInsults = insults;
 
 		int rand = Random.Range (0, currentInsults.Count);
@@ -81,7 +81,7 @@ public class PopUpEffect : MonoBehaviour {
 	}
 
 	public void DieOff() {
-		print ("TACCI MIA");
+		//print ("TACCI MIA");
 		iTween.Stop();
 		audio.Stop ();
 		isDead = true;
@@ -89,7 +89,12 @@ public class PopUpEffect : MonoBehaviour {
 	}
 
 	public void KillMe() {
-		print("LOLLAI");
 		enabled = false;
+	}
+
+	public void Restart() {
+		enabled = true;
+		iTween.Stop ();
+		ScaleUp();
 	}
 }

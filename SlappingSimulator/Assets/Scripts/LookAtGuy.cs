@@ -7,7 +7,7 @@ public class LookAtGuy : MonoBehaviour {
 	bool changed;
 
 	Vector3 originalPosition;
-	Vector3 originalRotation;
+	Quaternion originalRotation;
 
 	void Start () {
 		originalPosition = transform.position;
